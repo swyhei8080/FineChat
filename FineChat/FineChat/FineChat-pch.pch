@@ -1,0 +1,57 @@
+//
+//  FineChat-pch.pch
+//  FineChat
+//
+//  Created by shi on 16/6/15.
+//  Copyright © 2016年 shiweiyin. All rights reserved.
+//
+
+#ifndef FineChat_pch_pch
+#define FineChat_pch_pch
+
+#import <UIKit/UIKit.h>
+
+//分类
+#import "UIViewController+Log.h"
+#import "UIView+FC.h"
+#import "UIColor+ColorWithHex.h"
+
+//工具类
+#import "FCPromptUtil.h"
+#import "FCTransitionUtil.h"
+
+#import "FCLoginUser.h"
+
+//第三方框架
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+#import "MJRefresh.h"
+
+#ifdef DEBUG
+
+  #define FCLog(...) NSLog(__VA_ARGS__)
+
+  #define FCLog1(...) NSLog(@"\n\t%s \n\t%s \n\t%@\n\n",__FILE__,__func__,[NSString stringWithFormat:__VA_ARGS__])
+
+#endif
+
+//定义weakSelf/strongSelf
+#define FCWeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+#define FCStrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
+
+//颜色
+#define FCColor(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a/1.0]
+//这个需要传十六进制数字 UIColorFromRGB(0xe4b9a0);
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+//屏幕
+#define FCScreenW [UIScreen mainScreen].bounds.size.width
+#define FCScreenH [UIScreen mainScreen].bounds.size.height
+
+//登录信息存储key
+#define kUserNameKey @"UserNameKey"
+#define kUserPasswdKey @"UserPasswdKey"
+#define kUserTokenKey @"UserTokenKey"
+
+
+#endif /* FineChat_pch_pch */
